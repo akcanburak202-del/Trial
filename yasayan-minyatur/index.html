@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#e9dfc7" />
+  <meta name="description" content="Bir minyatürün içinde güneşi batır, yağmuru çağır ve küçük hikâyeleri keşfet." />
+  <title>Yaşayan Minyatür — Nehrin Bir Günü</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23d8aa66'/%3E%3Cpath d='M0 45Q16 30 32 45T64 45M0 53Q16 38 32 53T64 53' fill='none' stroke='%23106f79' stroke-width='6'/%3E%3Ccircle cx='43' cy='18' r='9' fill='%23fff1c7'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar"><a href="../" class="back-link" aria-label="Tüm deneylere dön">← <span>TRIAL</span></a><div class="topbrand"><span class="brand-flower" aria-hidden="true">✻</span> YAŞAYAN MİNYATÜR</div><div class="topno">DENEY / 02</div></header>
+    <main class="workspace">
+      <section class="canvas-panel" aria-labelledby="page-title">
+        <div class="paper-ribbon"><span>✦ &nbsp; NEHRİN BİR GÜNÜ</span><span id="ribbon-time">İKİNDİ / 16:00</span></div>
+        <div class="art-outer"><div class="art-frame" id="art-frame">
+          <img class="art-image" src="./assets/village.webp" alt="Nehir, taş köprü, bahçeler ve evlerle resmedilmiş hayali bir minyatür köyü" />
+          <div class="light-overlay" aria-hidden="true"></div><div class="moon" aria-hidden="true"></div>
+          <canvas id="effects" aria-hidden="true"></canvas>
+          <div class="glimmer-window window-one" aria-hidden="true"></div><div class="glimmer-window window-two" aria-hidden="true"></div>
+          <button class="hotspot" data-place="tree" style="--x:19%;--y:55%" aria-label="Nar ağacını keşfet"><span>✻</span></button>
+          <button class="hotspot" data-place="bridge" style="--x:48%;--y:63%" aria-label="Taş köprüyü keşfet"><span>✻</span></button>
+          <button class="hotspot" data-place="house" style="--x:79%;--y:42%" aria-label="Evleri keşfet"><span>✻</span></button>
+          <button class="hotspot" data-place="boat" style="--x:60%;--y:81%" aria-label="Nehirdeki kayığı keşfet"><span>✻</span></button>
+          <div class="scene-caption"><span id="weather-label">GÖKYÜZÜ AÇIK</span><span class="caption-rule"></span><span id="clock-label">16:00</span></div>
+        </div></div>
+        <p class="art-footnote">HAYALİ BİR YER · MİNYATÜR TARZINDA BİR DÜNYA · DOKUNARAK KEŞFET</p>
+      </section>
+
+      <aside class="controls">
+        <div class="title-block"><span class="index">01 / YAŞAYAN SAHNE</span><h1 id="page-title">Bir resmin<br /><i>içinde zaman.</i></h1><p>Güneşi batır. Yağmuru çağır. Minyatürdeki dört küçük işarete dokun.</p></div>
+        <div class="control-box"><div class="control-head"><span>GÜNÜN SAATİ</span><strong id="hour-text">16:00</strong></div><input id="time" type="range" min="0" max="24" step="0.25" value="16" aria-label="Günün saatini değiştir" /><div class="time-ticks"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div><div class="quick-times"><button data-hour="6">ŞAFAK</button><button data-hour="13">GÜNDÜZ</button><button data-hour="21">GECE</button></div></div>
+        <div class="control-box weather-box"><div class="control-head"><span>GÖKYÜZÜ</span><strong id="weather-text">AÇIK</strong></div><div class="weather-options" role="group" aria-label="Hava durumu"><button class="selected" id="sunny" aria-pressed="true"><span aria-hidden="true">☀</span> Açık</button><button id="rainy" aria-pressed="false"><span aria-hidden="true">☂</span> Yağmur</button></div></div>
+        <div class="story" id="story" aria-live="polite"><span class="story-number" id="story-number">RESİM / 01</span><h2 id="story-title">Köy uyanık.</h2><p id="story-body">Saati değiştirince gölgeler uzar, pencereler aydınlanır. İşaretlere dokununca resim sana bir şey anlatır.</p><div class="story-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div>
+        <button id="motion" class="motion-toggle" aria-pressed="false">Ⅱ &nbsp; Hareketi durdur</button>
+      </aside>
+    </main>
+    <footer><span>NEHRİN BİR GÜNÜ / YAŞAYAN MİNYATÜR</span><span>ÇİZİLDİ · CANLANDI · SENİNLE DEĞİŞTİ</span></footer>
+  </div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
