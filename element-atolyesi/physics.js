@@ -8,7 +8,7 @@ export class World {
     this.moved = new Uint8Array(width * height);
     this.tick = 0;
   }
-  at(x, y) { return x < 0 || y < 0 || x >= this.width || y >= this.height ? M.STONE : this.cells[y * this.width + x]; }
+  at(x, y) { return x <= 0 || y <= 0 || x >= this.width - 1 || y >= this.height ? M.STONE : this.cells[y * this.width + x]; }
   put(x, y, material) {
     if (x < 0 || y < 0 || x >= this.width || y >= this.height) return;
     const i = y * this.width + x;
