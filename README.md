@@ -2,6 +2,8 @@
 
 Tarayıcıda çalışan küçük bir yörünge simülasyonu. Turkuaz hız okunu sürükleyin, aracı fırlatın ve üç sahnede kütleçekiminin rotaya etkisini izleyin.
 
+**Telefonda veya bilgisayarda aç:** [Yörünge Atölyesi](https://yorunge-atolyesi.akcanburak202.chatgpt.site). Site sahibi ChatGPT hesabıyla erişilebilir; kurulum gerekmez.
+
 ## Çalıştırma
 
 Projede derleme adımı veya bağımlılık yoktur. ES modüllerinin yüklenmesi için dizinde bir HTTP sunucusu başlatın:
