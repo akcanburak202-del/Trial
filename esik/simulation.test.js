@@ -1,0 +1,9 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {freshState,restoreState,tick,perform,chapter} from './simulation.js';
+const run=(s,seconds,coverage=1)=>{for(let i=0;i<seconds*20;i++)tick(s,.05,coverage)};
+test('water crosses the missing aqueduct only through a correctly placed active lens',()=>{const s=freshState();s.started=true;s.sourceOpen=true;run(s,20);assert.equal(s.basin,0);s.lens=true;run(s,10,0);assert.equal(s.basin,0);run(s,10);assert.ok(s.basin>.69);});
+test('water stays after the lens closes and the gate latches',()=>{const s=freshState();Object.assign(s,{started:true,sourceOpen:true,lens:true});run(s,11);assert.equal(s.gate,true);s.lens=false;const total=s.basin+(s.left+s.right)/1.18;run(s,20);assert.ok(Math.abs(total-(s.basin+(s.left+s.right)/1.18))<1e-8);assert.equal(s.gate,true);});
+test('complete route reaches the finale; incorrect notes cannot unlock it',()=>{const s=freshState();Object.assign(s,{started:true,lens:true,sourceOpen:true,distributor:2});run(s,55);assert.equal(s.garden,true);assert.equal(chapter(s),2);s.lensArea='organ';run(s,5);assert.equal(perform(s),'tuning');s.notes=[1,3,2];assert.equal(perform(s),'success');assert.equal(chapter(s),3);});
+test('reservoirs are bounded and exhausted water cannot be duplicated',()=>{const s=freshState();Object.assign(s,{started:true,gate:true,basin:1,distributor:2});run(s,100);assert.ok(s.basin>=0);assert.ok(s.left<=1&&s.right<=1);assert.ok(Math.abs(s.left+s.right-1.18)<1e-8);});
+test('reload preserves progress without restoring a running time lens',()=>{const s=freshState();Object.assign(s,{started:true,lens:true,basin:.4,gate:true,left:.7,right:.68,garden:true,notes:[1,3,2]});const r=restoreState(JSON.parse(JSON.stringify(s)));assert.equal(r.lens,false);assert.equal(r.basin,.4);assert.equal(r.garden,true);assert.deepEqual(r.notes,[1,3,2]);assert.deepEqual(restoreState({version:7}),freshState());});
